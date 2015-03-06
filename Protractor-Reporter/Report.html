@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>document.write("<base href=\"" + document.location + "\" />");</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="reportController.js"></script>
+    <title></title>
+</head>
+<body>
+    <div ng-app="reportViewer">
+        <h2>Template Report</h2>
+        <div ng-controller="reportController">
+
+            Name only <input ng-model="search.name"><br>
+            Phone only <input ng-model="search.phone"><br>
+
+            <table id="searchTextResults">
+                <tr><th>Name</th><th>Gender</th><th>Company</th><th>Email</th><th>Phone</th><th>Address</th><th>Balance</th></tr>
+                <tr ng-repeat="data in reportData |filter:search:strict">
+                    <td>{{data.name}}</td>
+                    <td>{{data.gender}}</td>
+                    <td>{{data.company}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.phone}}</td>
+                    <td>{{data.address}}</td>
+                    <td>{{data.balance}}</td>
+                </tr>
+            </table>
+
+            <form ng-submit="addTodo()">
+                <input type="text" ng-model="todoText" size="30"
+                       placeholder="add new todo here">
+                <input class="btn-primary" type="submit" value="add">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
